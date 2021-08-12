@@ -1,0 +1,10 @@
+console.log("Hello world!");
+console.log("سلام دنیا");
+console.log("Ciao mondo");
+console.log("Hallo Welt");
+console.log("Halo Dunia");
+console.log("Olá Mundo");
+console.log("Bonjour le monde");
+console.log("Привет мир");
+console.log("Hola Mundo");
+console.log("Hej världen");
