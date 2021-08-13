@@ -1,6 +1,6 @@
 
 function typechecker(argument1 , argument2){
-    if(argument1 === argument2){
+    if(typeof(argument1) == typeof(argument2)){
        console.log('SAME TYPE');
     }else{
         console.log('Not the same');
@@ -21,25 +21,14 @@ let u = {
     grade : "A",
 }
 
-// Check if data type is the same
-if (x === y) {
-    console.log('SAME TYPE');
-}if (x === u) {
-    console.log('SAME TYPE');
-} if (x === z){
-    console.log('SAME TYPE');
-}if (u === z){
-    console.log('SAME TYPE');
-}if (y === z){
-    console.log('SAME TYPE');
-}else{
-    console.log('Not the same');
-}   
 
+typechecker(x,y); //the same
+typechecker(x,z); //not
+typechecker(x,u); //not
+typechecker(y,u); //not
+typechecker(y,z); //not
+typechecker(u,z); //same
 
-// Check data type
-console.log(typeof x);
-console.log(typeof z);
 
 
 
