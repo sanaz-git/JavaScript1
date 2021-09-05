@@ -1,0 +1,44 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@1,600&family=Asap&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@100;300;400&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+div{
+    height: 33.33vh;
+}
+
+#fahrenheit{
+    border-top: 4px solid white;
+    border-bottom: 4px solid white;
+
+}
+
+input[type=number] {
+    width: 100%;
+    height: 100%;
+    font-family: Asap, sans-serif;
+    background: black;
+    color:white;
+    font-size: 10em;
+    text-align: center;
+    border: 0;
+}
+
+::-webkit-input-placeholder{ /*chrome/opera/safari*/
+    color: #222222;
+}
+
+::-moz-placeholder{ /*firefox*/
+    color: #222222;
+}
+
+::-ms-input-placeholder{ /*edgr*/
+    color: #222222;
+}
