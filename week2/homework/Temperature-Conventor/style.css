@@ -1,5 +1,5 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@1,600&family=Asap&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@100;300;400&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -31,14 +31,14 @@ input[type=number] {
     border: 0;
 }
 
-::-webkit-input-placeholder{ /*chrome/opera/safari*/
+::-webkit-input-placeholder{ 
     color: #222222;
 }
 
-::-moz-placeholder{ /*firefox*/
+::-moz-placeholder{ 
     color: #222222;
 }
 
-::-ms-input-placeholder{ /*edgr*/
+::-ms-input-placeholder{ 
     color: #222222;
 }
