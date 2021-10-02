@@ -3,18 +3,10 @@
 function giveCompliment(name){
     compliments =["great", "awesome", "supersmart", "amazing", "incredible", " inspire", "positivity", 
     "creative", "friendly", "honest"];
-    return Math.floor(compliments.random() + name); 
-
+    const randomItem = compliments[Math.floor(Math.random() * compliments.length)] ; 
+    return `You are ${randomItem}, Noer!` 
+    
 }
 
-const name = "Noer";
+console.log(giveCompliment());
 
-// const randomCompliments = compliments[Math.floor(Math.random() * compliments.length)];
-
-// console.log(`You are ${randomCompliments} , Noer !`);
-
-
-
-giveCompliment('Noer');
-giveCompliment('Noer'); 
-giveCompliment('Noer');
