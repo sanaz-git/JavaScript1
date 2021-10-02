@@ -6,11 +6,15 @@ const locations = ["Canada", "Austria", "France", "Germany", "Norway"];
 
 const jobs = ["Teacher", "engineer", "programmer", "Physician", "Nurse"];
 
-function tellFortune(a, b, c, d) {
+function tellFortune() {
 
-    Math.floor(numChildren.random() + a)
+    const randomNumChildren = numChildren[Math.floor(Math.random() * numChildren.length)] ;
+    const randomPartnerNames = partnerNames[Math.floor(Math.random() * partnerNames.length)] ;
+    const randomLocations = locations[Math.floor(Math.random() * locations.length)] ;
+    const randomJobs = jobs[Math.floor(Math.random() * jobs.length)] ;
+    
 
-    return `You will be a ${jobs} in ${locations} married to ${partnerNames} with ${numChildren} kids.`
+    return `You will be a ${randomJobs} in ${randomLocations} married to ${randomPartnerNames} with ${randomNumChildren} kids.`
 }
 
 console.log(tellFortune(numChildren, partnerNames, locations, jobs));
