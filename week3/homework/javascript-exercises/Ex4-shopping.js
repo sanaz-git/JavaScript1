@@ -1,21 +1,31 @@
 //It hasn't completed yet!
 
-finalList = [];
-shoppingCart = ["bananas", "milk"];
-shoppingList = ["chocolate","waffles","tea"];
+// finalList = [];
+const shoppingCart = ["bananas", "milk"];
+const shoppingList = ["chocolate","waffles","tea"];
+// Array.prototype.push.apply(shoppingCart, shoppingList);
 
 function addToShoppingCart(){
-    for(let i = 0; i < shoppingList.length; i++){
-            shoppingCart.push(shoppingList[i]);
+    for(let i = 0; i < 3; i++){
+        
+        if(shoppingCart.push(shoppingList[0]){
+         const removeValFromIndex = [0];
+        }
+        else if(shoppingList.push(shoppingList[1]){
+         const removeValFromIndex = [0,1];
+        }
+         
 
 
         
-        }
-    const finalSentence = shoppingList.join(', ');
-    return `You bought ${shoppingList} ! `
+
+    // const finalSentence = shoppingList.join(', ');
+    // return `You bought ${shoppingList} ! `
 }
 
-console.log(addToShoppingCart('chocolate')); 
-console.log(addToShoppingCart('waffles')); 
-console.log(addToShoppingCart('tea'));
+console.log(shoppingCart)
+
+// console.log(addToShoppingCart('chocolate')); 
+// console.log(addToShoppingCart('waffles')); 
+// console.log(addToShoppingCart('tea'));
 
