@@ -6,14 +6,14 @@ function numCharacters(num){
     let input = num.toString().length;
     
    if(input == 16){
-        return `${num} is valid`
+        return true;
    }
 
    else{
-    return `${num} isn't valid`
+    return false;
    }      
 }
-console.log(numCharacters("1234567345678"));
+// console.log(numCharacters("1234567345678"));
 
 // All characters must be numbers
 function checkNumber(num){
@@ -21,14 +21,14 @@ function checkNumber(num){
 
     if(num.match(regEx))
      {
-        return `${num} is valid`
+        return true;
      }
 
     else{
-        return `${num} isn't valid`
+        return false;
     } 
 }
-console.log(checkNumber("1234567345678"));
+// console.log(checkNumber("1234567345678"));
 
 
 // At least two different numbers should be represented
@@ -41,35 +41,51 @@ function twoDifferentNumbers(num){
         return false;
 }
 
-console.log(twoDifferentNumbers("1234567345678"));
+// console.log(twoDifferentNumbers("1234567345678"));
 
 // The last number must be even
 function lastNumIsEven(num){
     lastDigit = num % 10;
     //   console.log('The last digit of ', num, ' is ', lastDigit);
     if(lastDigit % 2 == 0){
-        return `${num} is valid`
+        return true;
     }
 
    else{
-       return `${num} isn't valid`
+       return false
    } 
 }
-console.log(lastNumIsEven("1234567345679"));
+// console.log(lastNumIsEven("1234567345679"));
 
 // The sum of all the numbers must be greater than 16
 function sum(num){
-    for (let i in num){
-        sum += num[i];
+    let sumOfNumbers = 0;
+
+    for (let i = 0 ; i < num.length ; i++){
+        sumOfNumbers += parseInt(num[i]);   
     } 
-    if(sum >= 16){
+       
+    if(sumOfNumbers > 16){
         return true;
     }
     else{
         return false;
-    }    
+    } 
+     
 }
-console.log(sum("1234567345679"));
+// console.log(sum("123452"));
+
+function validateCreditNumber(num){
+
+   if(numCharacters(num) && checkNumber(num) && twoDifferentNumbers(num) && lastNumIsEven(num) && sum(num) == true){
+       return true
+   } else {
+       return false
+   }  
+}
+
+
+console.log(validateCreditNumber("2222222222222224"))
 
 
 
