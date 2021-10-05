@@ -13,7 +13,7 @@ function numCharacters(num){
 }
 console.log(numCharacters("1234567345678"));
 
-//All characters must be numbers
+// All characters must be numbers
 function checkNumber(num){
     let regEx ='^[0-9]+$' ;
 
@@ -27,5 +27,19 @@ function checkNumber(num){
     } 
 }
 console.log(checkNumber("1234567345678"));
+
+
+//At least two different numbers should be represented
+
+function twoDifferentNumbers(num){
+    
+        for(i=1; i<num.length; i++){
+           if(num[0] !== num[i])
+              return true;
+        }    
+        return false;
+}
+
+console.log(twoDifferentNumbers("1234567345678"));
 
 
