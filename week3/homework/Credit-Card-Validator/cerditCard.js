@@ -1,6 +1,5 @@
 
 // Input must be 16 characters
-
 function numCharacters(num){
     let input = num.toString().length;
     
@@ -12,21 +11,21 @@ function numCharacters(num){
     return `${num} isn't valid`
    }      
 }
-
-console.log(numCharacters(1234567345678))
+console.log(numCharacters("1234567345678"));
 
 //All characters must be numbers
-
 function checkNumber(num){
-    let input = num;
+    let regEx ='^[0-9]+$' ;
 
-    if(input.match(num)){
+    if(num.match(regEx))
+     {
         return `${num} is valid`
-    }
+     }
 
     else{
-     return `${num} isn't valid`
+        return `${num} isn't valid`
     } 
-
 }
-console.log(numCharacters(1234567345678))
+console.log(checkNumber("1234567345678"));
+
+
