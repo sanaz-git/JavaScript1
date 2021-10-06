@@ -1,6 +1,3 @@
-// const num = prompt("Enter a number: ");
-
-
 // Input must be 16 characters
 function numCharacters(num){
     let input = num.toString().length;
@@ -13,7 +10,6 @@ function numCharacters(num){
     return false;
    }      
 }
-// console.log(numCharacters("1234567345678"));
 
 // All characters must be numbers
 function checkNumber(num){
@@ -28,8 +24,6 @@ function checkNumber(num){
         return false;
     } 
 }
-// console.log(checkNumber("1234567345678"));
-
 
 // At least two different numbers should be represented
 function twoDifferentNumbers(num){
@@ -41,7 +35,6 @@ function twoDifferentNumbers(num){
         return false;
 }
 
-// console.log(twoDifferentNumbers("1234567345678"));
 
 // The last number must be even
 function lastNumIsEven(num){
@@ -55,7 +48,6 @@ function lastNumIsEven(num){
        return false
    } 
 }
-// console.log(lastNumIsEven("1234567345679"));
 
 // The sum of all the numbers must be greater than 16
 function sum(num){
@@ -73,7 +65,6 @@ function sum(num){
     } 
      
 }
-// console.log(sum("123452"));
 
 function validateCreditNumber(num){
 
@@ -83,9 +74,27 @@ function validateCreditNumber(num){
        return false
    }  
 }
+function checking(num) {
+    if (numCharacters(num) == false) {
+        return `invalid! ${num} must be 16 characters!`
+    } else if (checkNumber(num) == false) {
+        return `invalid!  All characters of ${num} must be numbers!`
+    } else if (twoDifferentNumbers(num) == false) {
+        return `invalid! ${num} should contain at least 2 different types of numbers!`
+    } else if (lastNumIsEven(num) == false) {
+        return `invalid! The last number of ${num} must be even`
+    } else if (sum(num) == false) {
+        return `invalid! The sum of all the numbers of ${num} must be greater than 16`
+    } else {
+        return `The credit card number is valid`
+    }
+}
 
 
 console.log(validateCreditNumber("2222222222222224"))
+console.log(checking("2222222222222224"))
+
+
 
 
 
