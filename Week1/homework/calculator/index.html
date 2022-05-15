@@ -1,173 +1,159 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Calculator</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
 
-    <body>
-        <h1>HTML Calculator</h1>
-        <div id="calc-parent">
-            <div class= "row">
-                <div class="column" id="calc-display-val">0</div>
-            </div>
-            <div class= "row">
-                <div class="calc-btn column" id="calc-clear">AC</div>
-                <div class="calc-btn column" id="calc-backspace">&#8676;</div>
-                <div class="calc-btn calc-btn-operator column" id="calc-divide">&#247;</div>
-            </div>
-            <div class= "row">
-                <div class="calc-btn calc-btn-num column" id="calc-seven">7</div>
-                <div class="calc-btn calc-btn-num column" id="calc-eight">8</div>
-                <div class="calc-btn calc-btn-num column" id="calc-nine">9</div>
-                <div class="calc-btn calc-btn-operator column" id="calc-multiply">x</div>
-            </div>
-            <div class= "row">
-                <div class="calc-btn calc-btn-num column" id="calc-four">4</div>
-                <div class="calc-btn calc-btn-num column" id="calc-five">5</div>
-                <div class="calc-btn calc-btn-num column" id="calc-six">6</div>
-                <div class="calc-btn calc-btn-operator column" id="calc-minus">-</div>              
-            </div>
-            <div class= "row">
-                <div class="calc-btn calc-btn-num column" id="calc-one">1</div>
-                <div class="calc-btn calc-btn-num column" id="calc-two">2</div>
-                <div class="calc-btn calc-btn-num column" id="calc-three">3</div>
-                <div class="calc-btn calc-btn-operator column" id="calc-plus">+</div>
-            </div>
-            <div class= "row">
-                <div class="calc-btn calc-btn-num column" id="calc-zero">0</div>
-                <div class="calc-btn column" id="calc-decimal">.</div>
-                <div class="calc-btn calc-btn-operator column" id="calc-equals">=</div>
-            </div>
+  <body>
+    <h1>HTML Calculator</h1>
+    <div id="calc-parent">
+      <div class="row">
+        <div class="column" id="calc-display-val">0</div>
+      </div>
+      <div class="row">
+        <div class="calc-btn column" id="calc-clear">AC</div>
+        <div class="calc-btn column" id="calc-backspace">&#8676;</div>
+        <div class="calc-btn calc-btn-operator column" id="calc-divide">
+          &#247;
         </div>
-        <script>
+      </div>
+      <div class="row">
+        <div class="calc-btn calc-btn-num column" id="calc-seven">7</div>
+        <div class="calc-btn calc-btn-num column" id="calc-eight">8</div>
+        <div class="calc-btn calc-btn-num column" id="calc-nine">9</div>
+        <div class="calc-btn calc-btn-operator column" id="calc-multiply">
+          x
+        </div>
+      </div>
+      <div class="row">
+        <div class="calc-btn calc-btn-num column" id="calc-four">4</div>
+        <div class="calc-btn calc-btn-num column" id="calc-five">5</div>
+        <div class="calc-btn calc-btn-num column" id="calc-six">6</div>
+        <div class="calc-btn calc-btn-operator column" id="calc-minus">-</div>
+      </div>
+      <div class="row">
+        <div class="calc-btn calc-btn-num column" id="calc-one">1</div>
+        <div class="calc-btn calc-btn-num column" id="calc-two">2</div>
+        <div class="calc-btn calc-btn-num column" id="calc-three">3</div>
+        <div class="calc-btn calc-btn-operator column" id="calc-plus">+</div>
+      </div>
+      <div class="row">
+        <div class="calc-btn calc-btn-num column" id="calc-zero">0</div>
+        <div class="calc-btn column" id="calc-decimal">.</div>
+        <div class="calc-btn calc-btn-operator column" id="calc-equals">=</div>
+      </div>
+    </div>
+    <script>
+      var oneBtn = document.getElementById('calc-one');
+      var twoBtn = document.getElementById('calc-two');
+      var threeBtn = document.getElementById('calc-three');
+      var fourBtn = document.getElementById('calc-four');
+      var fiveBtn = document.getElementById('calc-five');
+      var sixBtn = document.getElementById('calc-six');
+      var sevenBtn = document.getElementById('calc-sven');
+      var eightBtn = document.getElementById('calc-eight');
+      var nineBtn = document.getElementById('calc-nine');
+      var zeroBtn = document.getElementById('calc-zero');
 
+      var decimalBtn = document.getElementById('calc-decimal');
+      var clearBtn = document.getElementById('calc-clear');
+      var backspaceBtn = document.getElementById('calc-backspace');
+      var displayValElement = document.getElementById('calc-display-val');
 
+      var displayVal = '0';
+      var pendingVal;
+      var evalStringArray = [];
 
-            var oneBtn = document.getElementById('calc-one');
-            var twoBtn = document.getElementById('calc-two');
-            var threeBtn = document.getElementById('calc-three');
-            var fourBtn = document.getElementById('calc-four');
-            var fiveBtn = document.getElementById('calc-five');
-            var sixBtn = document.getElementById('calc-six');
-            var sevenBtn = document.getElementById('calc-sven');
-            var eightBtn = document.getElementById('calc-eight');
-            var nineBtn = document.getElementById('calc-nine');
-            var zeroBtn = document.getElementById('calc-zero');
+      var calcNumBtns = document.getElementsByClassName('calc-btn-num');
+      var calcOperatorBtns =
+        document.getElementsByClassName('calc-btn-operator');
 
+      var updateDisplayVal = (clickObj) => {
+        var btnText = clickObj.target.innerText;
 
-            var decimalBtn = document.getElementById('calc-decimal');
-            var clearBtn = document.getElementById('calc-clear');
-            var backspaceBtn = document.getElementById('calc-backspace');
-            var displayValElement = document.getElementById('calc-display-val');
+        if (displayVal === '0') displayVal = '';
 
-            var displayVal = '0';
-            var pendingVal;
-            var evalStringArray = []; 
+        displayVal += btnText;
+        displayValElement.innerText = displayVal;
+      };
 
+      var performOperation = (clickObj) => {
+        var operator = clickObj.target.innerText;
 
-            var calcNumBtns = document.getElementsByClassName('calc-btn-num');
-            var calcOperatorBtns = document.getElementsByClassName('calc-btn-operator'); 
+        switch (operator) {
+          case '+':
+            pendingVal = displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('+');
+            break;
 
+          case '-':
+            pendingVal = displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('-');
+            break;
 
-            var updateDisplayVal = (clickObj) => {
-                var btnText = clickObj.target.innerText;
+          case 'x':
+            pendingVal = displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('*');
+            break;
 
-                if(displayVal === '0')
-                    displayVal = '';
+          case '÷':
+            pendingVal = displayVal;
+            displayVal = '0';
+            displayValElement.innerText = displayVal;
+            evalStringArray.push(pendingVal);
+            evalStringArray.push('/');
+            break;
 
-                displayVal += btnText;
-                displayValElement.innerText = displayVal;    
-            }
+          case '=':
+            evalStringArray.push(displayVal);
+            var evaluation = eval(evalStringArray.join(''));
+            displayVal = evaluation + '';
+            displayValElement.innerText = displayVal;
+            evalStringArray = [];
+            break;
+          default:
+            break;
+        }
+      };
 
-            var performOperation = (clickObj) => {
-                var operator = clickObj.target.innerText;
+      for (let i = 0; i < calcNumBtns.length; i++) {
+        calcNumBtns[i].addEventListener('click', updateDisplayVal, false);
+      }
+      for (let i = 0; i < calcOperatorBtns.length; i++) {
+        calcOperatorBtns[i].addEventListener('click', performOperation, false);
+      }
 
-                switch (operator) {
-                    case '+':
-                        pendingVal = displayVal;
-                        displayVal = '0';
-                        displayValElement.innerText = displayVal;
-                        evalStringArray.push(pendingVal);
-                        evalStringArray.push('+');
-                        break;
+      clearBtn.onclick = () => {
+        displayVal = '0';
+        pendingVal = undefined;
+        evalStringArray = [];
+        displayValElement.innerHTML = displayVal;
+      };
 
-                    case '-':
-                        pendingVal = displayVal;
-                        displayVal = '0';
-                        displayValElement.innerText = displayVal;
-                        evalStringArray.push(pendingVal);
-                        evalStringArray.push('-');
-                        break;  
-                        
-                    case 'x':
-                        pendingVal = displayVal;
-                        displayVal = '0';
-                        displayValElement.innerText = displayVal;
-                        evalStringArray.push(pendingVal);
-                        evalStringArray.push('*');
-                        break; 
+      backspaceBtn.onclick = () => {
+        let lengthOfDisplayval = displayVal.length;
+        displayVal = displayVal.slice(0, lengthOfDisplayval - 1);
 
-                    case '+':
-                        pendingVal = displayVal;
-                        displayVal = '0';
-                        displayValElement.innerText = displayVal;
-                        evalStringArray.push(pendingVal);
-                        evalStringArray.push('/');
-                        break; 
-                        
-                    case '=':
-                        evalStringArray.push(displayVal);
-                        var evaluation = eval(evalStringArray.join('')); 
-                        displayVal = evaluation + ''; 
-                        displayValElement.innerText = displayVal;
-                        evalStringArray = [];
-                        break;    
-                    default:
-                        break;    
-                }
+        if (displayVal === '') displayVal = '0';
 
-            }
+        displayValElement.innerText = displayVal;
+      };
 
-            for (let i = 0; i <calcNumBtns.length; i++){
-                calcNumBtns[i].addEventListener('click', updateDisplayVal, false);
-
-            }
-            for (let i = 0; i <calcOperatorBtns.length; i++){
-                calcOperatorBtns[i].addEventListener('click', performOperation, false);
-            }
-
-
-            clearBtn.onclick = () => {
-                displayVal = '0';
-                pendingVal = undefined;
-                evalStringArray = [];
-                displayValElement.innerHTML = displayVal;
-            }
-
-            backspaceBtn.onclick = () => {
-                let lengthOfDisplayval = displayVal.length;
-                displayVal = displayVal.slice(0, lengthOfDisplayval -1);
-
-                if(displayVal === '')
-                    displayVal = '0';
-                    
-                displayValElement.innerText = displayVal;
-            }
-
-            decimalBtn.onclick = () => {
-                if(!displayVal.includes('.'))
-                    displayVal += '.';
-                displayValElement.innerText = displayVal;
-            }
-
-
-
-
-
-
-
-        </script>
-    </body>
+      decimalBtn.onclick = () => {
+        if (!displayVal.includes('.')) displayVal += '.';
+        displayValElement.innerText = displayVal;
+      };
+    </script>
+  </body>
 </html>
