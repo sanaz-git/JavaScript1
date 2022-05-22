@@ -85,7 +85,7 @@
         switch (operator) {
           case '+':
             pendingVal = displayVal;
-            displayVal = '0';
+            displayVal = '';
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('+');
@@ -93,7 +93,7 @@
 
           case '-':
             pendingVal = displayVal;
-            displayVal = '0';
+            displayVal = '';
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('-');
@@ -101,7 +101,7 @@
 
           case 'x':
             pendingVal = displayVal;
-            displayVal = '0';
+            displayVal = '';
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('*');
@@ -109,7 +109,7 @@
 
           case '÷':
             pendingVal = displayVal;
-            displayVal = '0';
+            displayVal = '';
             displayValElement.innerText = displayVal;
             evalStringArray.push(pendingVal);
             evalStringArray.push('/');
@@ -135,7 +135,7 @@
       }
 
       clearBtn.onclick = () => {
-        displayVal = '0';
+        displayVal = '';
         pendingVal = undefined;
         evalStringArray = [];
         displayValElement.innerHTML = displayVal;
