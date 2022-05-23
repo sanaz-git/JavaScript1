@@ -13,10 +13,9 @@ body {
 
 .card {
   text-align: center;
-  border: 1px solid black;
+  border: none;
   border-radius: 10px;
   padding: 10px;
-
   background-image: linear-gradient(to bottom right, #c02425, #f0cb35);
 }
 
@@ -29,6 +28,7 @@ img {
 }
 
 #credit {
+  border: none;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 10px;
