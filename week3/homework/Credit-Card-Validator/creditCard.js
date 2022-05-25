@@ -1,13 +1,16 @@
 const credit = document.getElementById('credit');
-const validate = document.getElementById('validate');
 const select = document.getElementById('btn1');
+const validate = document.createElement('h1');
+const ulEl = document.createElement('ul');
+ulEl.classList.add('ul');
+ulEl.style.display = 'none';
+document.body.appendChild(ulEl);
+
+const credit2 = parseInt(credit.value);
 
 // Input must be 16 characters
-function numCharacters(credit) {
-  const input = credit.toString().length;
-  console.log(input);
-
-  if (input == 16) {
+function numCharacters() {
+  if (credit.value.length == 16) {
     return true;
   } else {
     return false;
@@ -15,78 +18,96 @@ function numCharacters(credit) {
 }
 
 // // All characters must be numbers
-// function checkNumber(credit) {
-//   let regEx = '^[0-9]+$';
+function checkNumber() {
+  let regEx = '^[0-9]+$';
 
-//   if (credit.match(regEx)) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
+  if (credit.value.match(regEx)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // At least two different numbers should be represented
-// function twoDifferentNumbers(credit) {
-//   for (i = 1; i < credit.length; i++) {
-//     if (credit[0] !== credit[i]) return true;
-//   }
-//   return false;
-// }
+function twoDifferentNumbers() {
+  for (i = 1; i < credit.value.length; i++) {
+    if (credit.value[0] !== credit.value[i]) return true;
+  }
+  return false;
+}
 
 // // The last number must be even
-// function lastNumIsEven(credit) {
-//   lastDigit = credit % 10;
-//   // console.log('The last digit of ', credit, ' is ', lastDigit);
-//   if (lastDigit % 2 == 0) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
+function lastNumIsEven() {
+  lastDigit = credit.value % 10;
+  if (lastDigit % 2 == 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // // The sum of all the numbers must be greater than 16
-// function sum(num) {
-//   let sumOfNumbers = 0;
+function sum() {
+  let sumOfNumbers = 0;
 
-//   for (let i = 0; i < num.length; i++) {
-//     sumOfNumbers += parseInt(num[i]);
-//   }
+  for (let i = 0; i < credit.value.length; i++) {
+    sumOfNumbers += parseInt(credit.value[i]);
+  }
 
-//   if (sumOfNumbers > 16) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
+  if (sumOfNumbers > 16) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 select.addEventListener('click', validateCreditNumber);
 
-function validateCreditNumber(credit) {
-  // const answers = [];
+function validateCreditNumber(credit2) {
+  ulEl.innerHTML = '';
+  const answers = [];
 
-  if (lastNumIsEven(credit) == true) {
+  if (
+    numCharacters(credit2) &&
+    checkNumber(credit2) &&
+    twoDifferentNumbers(credit2) &&
+    lastNumIsEven(credit2) &&
+    sum(credit2) == true
+  ) {
     validate.textContent = 'your number is valid';
+    answers.push(validate.textContent);
   } else {
-    validate.textContent = 'Input must be 16 characters';
+    if (numCharacters(credit2) == false) {
+      validate.textContent = 'Input must be 16 characters';
+      answers.push(validate.textContent);
+    }
 
-    // if (checkNumber(num) == false) {
-    //   answers.push('All characters must be numbers');
-    // }
+    if (checkNumber(credit2) == false) {
+      validate.textContent = 'All characters must be numbers';
+      answers.push(validate.textContent);
+    }
 
-    // if (twoDifferentNumbers(credit) == false) {
-    //   validate.textContent =
-    //     'At least two different numbers should be represented';
-    // }
+    if (twoDifferentNumbers(credit2) == false) {
+      validate.textContent =
+        'At least two different numbers should be represented';
+      answers.push(validate.textContent);
+    }
 
-    //   if (lastNumIsEven(num) == false) {
-    //     answers.push('The last number must be even');
-    //   }
+    if (lastNumIsEven(credit2) == false) {
+      validate.textContent = 'The last number must be even';
+      answers.push(validate.textContent);
+    }
 
-    //   if (sum(num) == false) {
-    //     answers.push('The sum of all the numbers must be greater than 16');
-    //   }
-
-    //   const x = answers.join('\n');
-    //   return `Invalid Number \n ${x} `;
+    if (sum(credit2) == false) {
+      validate.textContent =
+        'The sum of all the numbers must be greater than 16';
+      answers.push(validate.textContent);
+    }
   }
+  answers.forEach((answer) => {
+    const x = document.createElement('li');
+    x.textContent = answer;
+    ulEl.appendChild(x);
+    ulEl.style.display = 'block';
+  });
 }
