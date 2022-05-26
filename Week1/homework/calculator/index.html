@@ -85,32 +85,36 @@
         switch (operator) {
           case '+':
             pendingVal = displayVal;
-            displayVal = '';
+            displayVal = pendingVal;
             displayValElement.innerText = displayVal;
+            displayVal = '';
             evalStringArray.push(pendingVal);
             evalStringArray.push('+');
             break;
 
           case '-':
             pendingVal = displayVal;
-            displayVal = '';
+            displayVal = pendingVal;
             displayValElement.innerText = displayVal;
+            displayVal = '';
             evalStringArray.push(pendingVal);
             evalStringArray.push('-');
             break;
 
           case 'x':
             pendingVal = displayVal;
-            displayVal = '';
+            displayVal = pendingVal;
             displayValElement.innerText = displayVal;
+            displayVal = '';
             evalStringArray.push(pendingVal);
             evalStringArray.push('*');
             break;
 
           case '÷':
             pendingVal = displayVal;
-            displayVal = '';
+            displayVal = pendingVal;
             displayValElement.innerText = displayVal;
+            displayVal = '';
             evalStringArray.push(pendingVal);
             evalStringArray.push('/');
             break;
